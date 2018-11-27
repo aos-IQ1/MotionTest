@@ -1,0 +1,17 @@
+= Motion test
+ロボットのモーションを制御するサンプル。
+`s.rb`に書いたような手順で行う。
+
+== Setup
+
+[source, bash]
+----
+$ bundle install --path vendor/bundle
+----
+
+== Run
+
+[source, bash]
+----
+$ bundle exec ruby s.rb /dev/ttyUSB0
+----
