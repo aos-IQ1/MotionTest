@@ -17,3 +17,8 @@ $ bundle install --path vendor/bundle
 ----
 $ bundle exec ruby s.rb /dev/ttyUSB0
 ----
+
+== 注意点
+
+* 通信のパリティはEVEN
+* 各コマンド(`07 0C 80 0B 00 00 9E`とか)の送信をしたらロボットから帰ってくるコマンドを待って、次のコマンドを送る
