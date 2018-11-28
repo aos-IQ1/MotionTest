@@ -13,8 +13,8 @@ $ bundle install --path vendor/bundle
 
 == Run
 
+=== `4a42915ec3771ad2be3f038b9bfc3aac52688e30` 以前
 [source, bash]
-.run ( `4a42915ec3771ad2be3f038b9bfc3aac52688e30` 以前)
 ----
 $ bundle exec ruby s.rb /dev/ttyUSB0
 ----
@@ -36,6 +36,38 @@ $ bundle exec ruby s.rb /dev/ttyUSB0
  "\t\x00\x02\x00\x00\x00\x03\x00\x0E"
  [4, 0, 6, 10]
  POI
+----
+
+=== `b0bd3a46cde2282999f2dc8f77b60411637adfc1` 以降
+[source, bash]
+----
+$🐡 bundle exec ruby s.rb /dev/ttyUSB0 1
+                                      # motion number
+----
+
+.sample output
+----
+ start
+ ["\t\x00\x02\x00\x00\x00\x00\x00\v",
+  "\x11\x00\x02\x02\x00\x00K\x04\x00\x00\x00\x00\x00\x00\x00\x00d",
+  "\a\f\x80;\x00\x00\xCE",
+  "\t\x00\x02\x00\x00\x00\x03\x00\x0E"]
+ "\t\x00\x02\x00\x00\x00\x00\x00\v"
+ 0x4 0x0 0x6 0xA
+ [4, 0, 6, 10]
+ "\x11\x00\x02\x02\x00\x00K\x04\x00\x00\x00\x00\x00\x00\x00\x00d"
+ 0x4 0x0 0x6 0xA
+ [4, 0, 6, 10]
+ "\a\f\x80;\x00\x00\xCE"
+ 0x4 0xC 0x6 0x16
+ [4, 12, 6, 22]
+ "\t\x00\x02\x00\x00\x00\x03\x00\x0E"
+ 0x4 0x0 0x6 0xA
+ [4, 0, 6, 10]
+ 0x6 0x0 0x50 0x4F 0x49 0xEE
+ [6, 0, 80, 79, 73, 238]
+ POI
+
 ----
 
 == 注意点
