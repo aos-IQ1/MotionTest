@@ -14,8 +14,28 @@ $ bundle install --path vendor/bundle
 == Run
 
 [source, bash]
+.run ( `4a42915ec3771ad2be3f038b9bfc3aac52688e30` 以前)
 ----
 $ bundle exec ruby s.rb /dev/ttyUSB0
+----
+
+.sample output
+----
+ $🐡 bundle exec ruby s.rb /dev/ttyUSB0
+ start
+ ["\t\x00\x02\x00\x00\x00\x00\x00\v",
+  "\x11\x00\x02\x02\x00\x00K\x04\x00\x00\x00\x00\x00\x00\x00\x00d",
+  "\a\f\x80\v\x00\x00\x9E",
+  "\t\x00\x02\x00\x00\x00\x03\x00\x0E"]
+ "\t\x00\x02\x00\x00\x00\x00\x00\v"
+ [4, 0, 6, 10]
+ "\x11\x00\x02\x02\x00\x00K\x04\x00\x00\x00\x00\x00\x00\x00\x00d"
+ [4, 0, 6, 10]
+ "\a\f\x80\v\x00\x00\x9E"
+ [4, 12, 6, 22]
+ "\t\x00\x02\x00\x00\x00\x03\x00\x0E"
+ [4, 0, 6, 10]
+ POI
 ----
 
 == 注意点
