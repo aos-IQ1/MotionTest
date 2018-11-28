@@ -4,12 +4,15 @@ require 'pp'
 
 require 'serialport'
 
+def add_checksum(line)
+  line + [line.sum & 0xFF].pack("C")
+end
+
 def lines2byte(lines)
   lines.strip
    .split("\n")
-  .map{|line| line.split(/\s+/).map{|num| num.to_i(16)}.pack("C*") }
+  .map{|line| add_checksum(line.split(/\s+/).map{|num| num.to_i(16)}.pack("C*")) }
 end
-
 
 def send(line, sp)
   # send command
@@ -21,7 +24,6 @@ def send(line, sp)
   end
   @buf = nil
 end
-
 
 def sendlines(lines, sp)
   code = lines2byte(lines)
@@ -56,11 +58,14 @@ trap(:INT){ t.kill }
 #07 0C 80 0B 00 00 9E
 #09 00 02 00 00 00 03 00 0E
 
+address = [2944, 15232]
+i       = ARGV[1].to_i
+
 sendlines("""
-09 00 02 00 00 00 00 00 0B
-11 00 02 02 00 00 4B 04 00 00 00 00 00 00 00 00 64
-07 0C 80 0B 00 00 9E
-09 00 02 00 00 00 03 00 0E
+09 00 02 00 00 00 00 00
+11 00 02 02 00 00 4B 04 00 00 00 00 00 00 00 00
+07 0C #{[address[i]].pack("S").unpack("C*").map{|n| "%02X" % n}.join(" ")} 00 00
+09 00 02 00 00 00 03 00
 """, sp)
 
 puts "POI"
