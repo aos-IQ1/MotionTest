@@ -44,6 +44,7 @@ sp = SerialPort.new(ARGV[0], 115200, 8, 1, SerialPort::EVEN) # 9600bps, 8bit, st
 
 # 1文字UARTから読んで0xFFみたいな書式で出力
 def getc_and_print(sp)
+  print "Enter"
   c = sp.getc.unpack(?C).first
   print "0x%X " % c
   c
