@@ -52,8 +52,8 @@ end
 def gen_multi_servo(spd, cmds)
   target_servo = cmds.keys
     .inject(Array.new(5, 0)){|bytes, servo| 
-      i = servo.div(8)
-      bytes[i] += ( 1 << (servo-8*i-1) ) 
+      i = (servo-1).div(8)
+      bytes[i] += ( 1 << (servo-1)%8 ) 
       bytes
     }
   spd_posi = [spd] + cmds.values.map{|position|
